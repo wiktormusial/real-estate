@@ -1,5 +1,8 @@
 from django.core.validators import MaxValueValidator, MinValueValidator
+from django.core.exceptions import ValidationError
+from django.utils.translation import gettext_lazy as _
 from django.db import models
+
 from utils.models import TimeStampedModel
 
 
@@ -22,3 +25,22 @@ class House(TimeStampedModel):
 
     def __str__(self):
         return self.title
+
+
+class PhotoHouse(TimeStampedModel):
+    title = models.CharField(max_length=100)
+    house = models.ForeignKey(House,
+                              on_delete=models.CASCADE,
+                              related_name="photos")
+    main_photo = models.BooleanField(default=False)
+    image = models.ImageField(upload_to="images")  # to do -> s3 integration
+
+    def __str__(self):
+        return self.title
+
+    def save(self, *args, **kwargs):
+        for i in House.objects.get(title=self.house).photos.all():
+            if i.main_photo:
+                self.main_photo = False
+
+        return super(PhotoHouse, self).save(*args, **kwargs)
