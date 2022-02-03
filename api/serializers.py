@@ -5,7 +5,7 @@ from houses.models import House, PhotoHouse, City
 class CitySerializer(serializers.ModelSerializer):
     class Meta:
         model = City
-        fields = ['id', 'title']
+        fields = ['id', 'title', 'zip_code']
 
 
 class PhotoHouseSerializer(serializers.ModelSerializer):

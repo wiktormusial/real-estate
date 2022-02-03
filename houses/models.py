@@ -1,6 +1,4 @@
 from django.core.validators import MaxValueValidator, MinValueValidator
-from django.core.exceptions import ValidationError
-from django.utils.translation import gettext_lazy as _
 from django.db import models
 
 from utils.models import TimeStampedModel
@@ -8,6 +6,8 @@ from utils.models import TimeStampedModel
 
 class City(TimeStampedModel):
     title = models.CharField(max_length=50)
+    zip_code = models.IntegerField(validators=[MinValueValidator(10000),
+                                               MaxValueValidator(99999)])
 
     def __str__(self):
         return self.title
