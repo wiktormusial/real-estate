@@ -9,6 +9,8 @@ class PhotoHouseSerializer(serializers.ModelSerializer):
 
 
 class DataSerializer(serializers.ModelSerializer):
+    photos = PhotoHouseSerializer(many=True, read_only=True)
+
     class Meta:
         model = House
         fields = ['title', 'desc', 'address', 'qm', 'city', 'photos']
