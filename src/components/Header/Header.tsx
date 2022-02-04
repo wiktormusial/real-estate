@@ -20,7 +20,16 @@ const Header: React.FC = () => {
     }
   }, [])
 
-  return <div>Header</div>
+  return (
+    <div className="container">
+      <div className="bg-indigo-400 h-60 shadow-xl">
+        <div className="text-white text-center pt-10">
+          <div className="text-5xl ">Musial houses</div>
+          <div className="text-2xl">Place with best short-term apartaments</div>
+        </div>
+      </div>
+    </div>
+  )
 }
 
 export default Header

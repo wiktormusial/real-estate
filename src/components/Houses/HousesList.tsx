@@ -9,7 +9,13 @@ const HousesList: React.FC = () => {
     return <HousesListElement key={item.id} item={item} />
   })
 
-  return <div>{housesList}</div>
+  return (
+    <div className="container -mt-48 grid grid-cols-1 place-items-center ">
+      <div className="h-3/4 w-8/12 overflow-y-auto overflow-x-hidden bg-white p-5 drop-shadow-2xl">
+        {housesList}
+      </div>
+    </div>
+  )
 }
 
 export default HousesList
