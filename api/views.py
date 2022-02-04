@@ -2,8 +2,8 @@ from rest_framework import viewsets
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
-from houses.models import House, City
-from .serializers import DataSerializer, CitySerializer
+from houses.models import House, City, PhotoHouse
+from .serializers import DataSerializer, CitySerializer, PhotoHouseSerializer
 
 
 class IndexView(APIView):
@@ -21,3 +21,8 @@ class GetData(APIView):
 class CityViewSet(viewsets.ModelViewSet):
     serializer_class = CitySerializer
     queryset = City.objects.all()
+
+
+class PhotosViewSet(viewsets.ModelViewSet):
+    serializer_class = PhotoHouseSerializer
+    queryset = PhotoHouse.objects.all()
