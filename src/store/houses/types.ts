@@ -2,6 +2,7 @@ export interface HousesState {
   id: number
   title: string
   desc: string
+  qm: number
   city: [
     {
       id: number

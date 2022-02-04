@@ -1,7 +1,8 @@
 import React from "react"
+import HousesList from "./Houses/HousesList"
 
 const Index = () => {
-  return <div>Hello World!</div>
+  return <HousesList />
 }
 
 export default Index
