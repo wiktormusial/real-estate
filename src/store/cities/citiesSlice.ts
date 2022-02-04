@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
+import type { RootState } from "../store"
 
 export interface CitiesState {
   id: number
@@ -17,4 +18,6 @@ export const citiesSlice = createSlice({
   reducers: {},
 })
 
+export const selectAllHouses = (state: RootState) => state.cities.cities
+export const selectHousesStatus = (state: RootState) => state.cities.status
 export default citiesSlice.reducer
