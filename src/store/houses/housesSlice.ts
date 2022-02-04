@@ -1,7 +1,8 @@
-import { createSlice } from "@reduxjs/toolkit"
+import { createSlice, PayloadAction } from "@reduxjs/toolkit"
+import { fetchHousesThunk } from "./housesThunks"
 import type { RootState } from "../store"
 
-interface HousesState {
+export interface HousesState {
   id: number
   title: string
   desc: string
@@ -33,7 +34,17 @@ export const housesSlice = createSlice({
   name: "houses",
   initialState,
   reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(
+      fetchHousesThunk.fulfilled,
+      (state, action: PayloadAction<HousesState>) => {
+        state.status = "succedded"
+        state.houses = action.payload
+      }
+    )
+  },
 })
 
-export default housesSlice.reducer
 export const selectAllHouses = (state: RootState) => state.houses.houses
+export const selectHousesStatus = (state: RootState) => state.houses.status
+export default housesSlice.reducer
