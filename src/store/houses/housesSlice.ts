@@ -2,32 +2,16 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { fetchHousesThunk } from "./housesThunks"
 import type { RootState } from "../store"
 
-export interface HousesState {
-  id: number
-  title: string
-  desc: string
-  city: [
-    {
-      id: number
-      title: string
-      zip_code: number
-    }
-  ]
-  address: string
-  photos: [
-    {
-      id: number
-      title: string
-      house: number
-      main_photo: boolean
-      image: string
-    }
-  ]
+import { HousesState } from "./types"
+
+export interface State {
+  status: "idle" | "failed" | "loading" | "succedded"
+  houses: HousesState[]
 }
 
-const initialState = {
+const initialState: State = {
   status: "idle",
-  houses: <HousesState | []>[],
+  houses: [],
 }
 
 export const housesSlice = createSlice({
@@ -38,9 +22,9 @@ export const housesSlice = createSlice({
     builder
       .addCase(
         fetchHousesThunk.fulfilled,
-        (state, action: PayloadAction<HousesState>) => {
+        (state, action: PayloadAction<[]>) => {
           state.status = "succedded"
-          state.houses = action.payload
+          state.houses = state.houses.concat(action.payload)
         }
       )
       .addCase(fetchHousesThunk.pending, (state) => {
