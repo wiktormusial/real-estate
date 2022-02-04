@@ -35,13 +35,20 @@ export const housesSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(
-      fetchHousesThunk.fulfilled,
-      (state, action: PayloadAction<HousesState>) => {
-        state.status = "succedded"
-        state.houses = action.payload
-      }
-    )
+    builder
+      .addCase(
+        fetchHousesThunk.fulfilled,
+        (state, action: PayloadAction<HousesState>) => {
+          state.status = "succedded"
+          state.houses = action.payload
+        }
+      )
+      .addCase(fetchHousesThunk.pending, (state) => {
+        state.status = "loading"
+      })
+      .addCase(fetchHousesThunk.rejected, (state) => {
+        state.status = "failed"
+      })
   },
 })
 
