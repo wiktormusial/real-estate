@@ -20,4 +20,4 @@ class DataSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = House
-        fields = ['title', 'desc', 'address', 'qm', 'city', 'photos']
+        fields = ['id', 'title', 'desc', 'address', 'qm', 'city', 'photos']
