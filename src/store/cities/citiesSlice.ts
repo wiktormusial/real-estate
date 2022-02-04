@@ -35,6 +35,6 @@ export const citiesSlice = createSlice({
   },
 })
 
-export const selectAllHouses = (state: RootState) => state.cities.cities
-export const selectHousesStatus = (state: RootState) => state.cities.status
+export const selectAllCities = (state: RootState) => state.cities.cities
+export const selectCitiesStatus = (state: RootState) => state.cities.status
 export default citiesSlice.reducer
