@@ -1,6 +1,7 @@
 from rest_framework import viewsets
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
 
 from houses.models import House, City, PhotoHouse
 from .serializers import DataSerializer, CitySerializer, PhotoHouseSerializer
@@ -21,8 +22,10 @@ class GetData(APIView):
 class CityViewSet(viewsets.ModelViewSet):
     serializer_class = CitySerializer
     queryset = City.objects.all()
+    permission_classes = [IsAuthenticated]
 
 
 class PhotosViewSet(viewsets.ModelViewSet):
     serializer_class = PhotoHouseSerializer
     queryset = PhotoHouse.objects.all()
+    permission_classes = [IsAuthenticated]
