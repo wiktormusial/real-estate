@@ -1,7 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit"
+import housesReducer from "./houses/housesSlice"
 
 export const store = configureStore({
-  reducer: {},
+  reducer: {
+    houses: housesReducer,
+  },
 })
 
 export type AppDispatch = typeof store.dispatch
