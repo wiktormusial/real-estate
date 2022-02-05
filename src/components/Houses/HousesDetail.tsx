@@ -22,7 +22,12 @@ const HousesDetail: React.FC = () => {
     house = "Loading"
   }
 
-  return <div>{house}</div>
+  return (
+    <div className=" bg-white md:w-auto p-5">
+      <div className="mb-5">{house}</div>
+      <hr />
+    </div>
+  )
 }
 
 export default HousesDetail

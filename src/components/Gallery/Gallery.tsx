@@ -14,22 +14,24 @@ interface Photos {
 
 const Gallery: React.FC<Photos> = ({ photos }) => {
   const mainPhoto = photos.find((item) => item.main_photo === true)
-  const [photo, setPhoto] = useState(mainPhoto.image)
+  const [photo, setPhoto] = useState(
+    mainPhoto ? mainPhoto.image : photos[0].image
+  )
 
   const photos_list = photos.map((item) => {
     return (
-      <li key={item.id} className="mx-2" onClick={() => setPhoto(item.image)}>
-        <img src={item.image} />
-      </li>
+      <div className="h-26" onClick={() => setPhoto(item.image)} key={item.id}>
+        <img className="h-full object-cover" src={item.image} />
+      </div>
     )
   })
 
   return (
-    <div className="container h-96 w-96 flex flex-col">
-      <div className="mb-6">
+    <div className="max-h-max p-5">
+      <div className="grid grid-cols-1 mb-5">
         <img src={photo} />
       </div>
-      <ul className="inline flex flex-row">{photos_list}</ul>
+      <div className="grid grid-cols-4 gap-3">{photos_list}</div>
     </div>
   )
 }
