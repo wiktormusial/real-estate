@@ -37,5 +37,8 @@ export const housesSlice = createSlice({
 })
 
 export const selectAllHouses = (state: RootState) => state.houses.houses
+export const selectHouseById = (state: RootState, id: number) =>
+  state.houses.houses.find((item) => item.id === id)
+
 export const selectHousesStatus = (state: RootState) => state.houses.status
 export default housesSlice.reducer

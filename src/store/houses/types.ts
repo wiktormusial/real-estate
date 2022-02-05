@@ -3,13 +3,11 @@ export interface HousesState {
   title: string
   desc: string
   qm: number
-  city: [
-    {
-      id: number
-      title: string
-      zip_code: number
-    }
-  ]
+  city: {
+    id: number
+    title: string
+    zip_code: number
+  }
   address: string
   photos: [
     {
