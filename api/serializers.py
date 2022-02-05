@@ -1,5 +1,11 @@
 from rest_framework import serializers
-from houses.models import House, PhotoHouse, City
+from houses.models import House, PhotoHouse, City, HouseDetails
+
+
+class HouseDetailsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = HouseDetails
+        fields = ['rooms', 'qm', 'beds', 'balcony', 'bathrooms', 'kitchen']
 
 
 class CitySerializer(serializers.ModelSerializer):
@@ -17,7 +23,14 @@ class PhotoHouseSerializer(serializers.ModelSerializer):
 class DataSerializer(serializers.ModelSerializer):
     photos = PhotoHouseSerializer(many=True, read_only=True)
     city = CitySerializer(read_only=True)
+    details = serializers.SerializerMethodField()
 
     class Meta:
         model = House
-        fields = ['id', 'title', 'desc', 'address', 'qm', 'city', 'photos']
+        fields = ['id', 'title', 'desc', 'details', 'housedetails', 'address',
+                  'city', 'photos']
+
+    def get_details(self, obj):
+        queryset = HouseDetails.objects.get(pk=obj.housedetails.pk)
+        serializer = HouseDetailsSerializer(queryset)
+        return serializer.data

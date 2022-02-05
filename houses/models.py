@@ -20,8 +20,6 @@ class House(TimeStampedModel):
     city = models.ForeignKey(City,
                              related_name="city",
                              on_delete=models.CASCADE)
-    qm = models.IntegerField(validators=[MinValueValidator(1),
-                                         MaxValueValidator(300)])
 
     def __str__(self):
         return self.title
@@ -44,3 +42,19 @@ class PhotoHouse(TimeStampedModel):
                 self.main_photo = False
 
         return super(PhotoHouse, self).save(*args, **kwargs)
+
+
+class HouseDetails(TimeStampedModel):
+    house = models.OneToOneField(House,
+                                 on_delete=models.CASCADE,
+                                 primary_key=True,)
+    rooms = models.IntegerField(default=0)
+    qm = models.IntegerField(default=0, validators=[MinValueValidator(1),
+                                                    MaxValueValidator(300)])
+    beds = models.IntegerField(default=0)
+    balcony = models.BooleanField(default=False)
+    bathrooms = models.IntegerField(default=0)
+    kitchen = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"{self.house.title}'s' details"
