@@ -14,7 +14,11 @@ const HousesListElement: React.FC<Props> = ({ item }) => {
   const link = `/${item.id}`
 
   return (
+<<<<<<< HEAD
     <Link to={"/" + item.id}>
+=======
+    <Link to={link}>
+>>>>>>> reactapp
       <div className="container">
         <div className="grid grid-cols-3 gap-4 p-2">
           <div>
