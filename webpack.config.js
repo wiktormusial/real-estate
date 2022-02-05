@@ -1,5 +1,6 @@
 const path = require("path")
 const ESLintPlugin = require("eslint-webpack-plugin")
+const Dotenv = require("dotenv-webpack")
 
 module.exports = {
   entry: "./src/index.tsx",
@@ -27,7 +28,6 @@ module.exports = {
       },
       {
         test: /\.css$/i,
-        include: path.resolve(__dirname, "src"),
         use: ["style-loader", "css-loader", "postcss-loader"],
       },
       {
@@ -44,5 +44,6 @@ module.exports = {
     new ESLintPlugin({
       extensions: ["ts", "tsx"],
     }),
+    new Dotenv(),
   ],
 }
