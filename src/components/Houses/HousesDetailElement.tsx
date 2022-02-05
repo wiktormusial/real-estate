@@ -3,13 +3,14 @@ import Gallery from "../Gallery/Gallery"
 import Map from "../Map/Map"
 
 import { HousesState } from "../../store/houses/types"
+import Details from "../Details/Details"
 
 interface Props {
   item: HousesState
 }
 
 const HousesDetailElement: React.FC<Props> = ({ item }) => {
-  const { title, desc, photos } = item
+  const { title, desc, photos, id } = item
 
   return (
     <div className="flex flex-col md:flex-row text-justify">
@@ -21,8 +22,15 @@ const HousesDetailElement: React.FC<Props> = ({ item }) => {
           <Map />
         </div>
       </div>
-      <div className="w-auto h-3/4 max-h-full shadow-xl md:w-2/4">
-        <Gallery photos={photos} />
+      <div className="h-3/4 max-h-full md:w-2/4">
+        <div className="shadow-xl w-auto">
+          <Gallery photos={photos} />
+        </div>
+        <div className="h-3/4 max-h-full">
+          <div className="shadow-xl w-auto">
+            <Details id={id} />
+          </div>
+        </div>
       </div>
     </div>
   )

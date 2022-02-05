@@ -2,7 +2,14 @@ export interface HousesState {
   id: number
   title: string
   desc: string
-  qm: number
+  details: {
+    rooms: number
+    qm: number
+    beds: number
+    balcony: boolean
+    bathrooms: string
+    kitchen: boolean
+  }
   city: {
     id: number
     title: string
