@@ -6,7 +6,21 @@ interface Props {
 }
 
 const HousesDetailElement: React.FC<Props> = ({ item }) => {
-  return <div>Test</div>
+  const { title, desc, city, photos } = item
+
+  // todo -> create separate components for photos list
+  const photoslist = photos.map((item) => {
+    return <div>{item.image}</div>
+  })
+
+  return (
+    <div>
+      <div>{title}</div>
+      <div>{desc}</div>
+      <div>{city.title}</div>
+      <div>{photoslist}</div>
+    </div>
+  )
 }
 
 export default HousesDetailElement
