@@ -1,15 +1,9 @@
 import React, { useState } from "react"
 import { Formik, Form, Field } from "formik"
+import sendMail, { Values } from "../../api/sendMail"
 
 interface Props {
   id: number
-}
-
-interface FormValues {
-  houseId: number
-  body: string
-  subject: string
-  sender: string
 }
 
 const FormHeader = () => {
@@ -19,15 +13,18 @@ const FormHeader = () => {
 const ContactFormHouse: React.FC<Props> = ({ id }) => {
   const [status, setStatus] = useState("idle")
 
-  const initialValues: FormValues = {
+  const initialValues: Values = {
     houseId: id,
     body: "",
     subject: "",
     sender: "",
   }
 
-  const handleSumbit = (values: FormValues) => {
-    setStatus("succedded")
+  const handleSumbit = (values: Values) => {
+    setStatus("loading")
+    sendMail(values)
+      .then(() => setStatus("succedded"))
+      .catch((err) => console.log(err))
   }
 
   if (status === "idle") {
@@ -68,6 +65,13 @@ const ContactFormHouse: React.FC<Props> = ({ id }) => {
       </div>
     )
   } else if (status === "succedded") {
+    return (
+      <div>
+        <FormHeader />
+        Test
+      </div>
+    )
+  } else if (status === "loading") {
     return (
       <div>
         <FormHeader />
