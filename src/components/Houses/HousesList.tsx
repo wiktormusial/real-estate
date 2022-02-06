@@ -5,9 +5,16 @@ import HousesListElement from "./HousesListElement"
 
 const HousesList: React.FC = () => {
   const houses = useAppSelector(selectAllHouses)
-  const housesList = houses.map((item) => {
-    return <HousesListElement key={item.id} item={item} />
-  })
+
+  let housesList: JSX.Element[] | string
+
+  if (houses.length !== 0) {
+    housesList = houses.map((item) => {
+      return <HousesListElement key={item.id} item={item} />
+    })
+  } else {
+    housesList = "You have to add some houses"
+  }
 
   return (
     <div className="container -mt-48 grid grid-cols-1 place-items-center ">
