@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { Formik, Form, Field } from "formik"
 import sendMail, { Values } from "../../api/sendMail"
 import ContactFormSuccess from "./ContactFormSuccess"
+import ContactFormValidationSchema from "./ContactFormValidationSchema"
 
 interface Props {
   id: number
@@ -35,6 +36,7 @@ const ContactFormHouse: React.FC<Props> = ({ id }) => {
         <Formik
           initialValues={initialValues}
           onSubmit={(values) => handleSumbit(values)}
+          validationSchema={ContactFormValidationSchema}
         >
           <Form>
             <Field
