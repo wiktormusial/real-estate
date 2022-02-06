@@ -12,8 +12,7 @@ const Details: React.FC<Props> = ({ id }) => {
   console.log(obj)
   return (
     <div className="max-h-max p-5 mt-5 bg-white">
-      <div className="text-lg ">Details</div>
-      <hr />
+      <div className="text-lg underline mb-5">Details</div>
       <div className="grid grid-cols-2 ">
         <div>
           <div>

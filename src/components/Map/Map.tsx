@@ -11,13 +11,15 @@ const Map = () => {
   }
 
   return (
-    <div className="h-80">
-      <div className="text-xl underline mb-5 mt-5">Localization</div>
-      <GoogleMapReact
-        bootstrapURLKeys={{ key: `${process.env.GOOGLE_MAPS_API_KEY}` }}
-        defaultCenter={data.center}
-        defaultZoom={data.zoom}
-      ></GoogleMapReact>
+    <div className="md:mr-5 mb-5 h-96">
+      <div className="h-80">
+        <div className="text-xl underline mb-5 mt-5">Localization</div>
+        <GoogleMapReact
+          bootstrapURLKeys={{ key: `${process.env.GOOGLE_MAPS_API_KEY}` }}
+          defaultCenter={data.center}
+          defaultZoom={data.zoom}
+        ></GoogleMapReact>
+      </div>
     </div>
   )
 }

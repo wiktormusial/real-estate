@@ -8,6 +8,8 @@ import { useAppSelector } from "../../hooks/hooks"
 import HousesDetailElement from "./HousesDetailElement"
 
 const HousesDetail: React.FC = () => {
+  window.scrollTo(0, 0)
+
   const { houseId } = useParams()
   const status = useAppSelector(selectHousesStatus)
   const obj = useAppSelector((state) =>
@@ -23,7 +25,7 @@ const HousesDetail: React.FC = () => {
   }
 
   return (
-    <div className=" bg-white md:w-auto p-5">
+    <div className="bg-white md:w-auto p-5">
       <div className="mb-5">{house}</div>
       <hr />
     </div>

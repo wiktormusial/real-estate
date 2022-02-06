@@ -1,4 +1,5 @@
 import React, { useEffect } from "react"
+import { Link } from "react-router-dom"
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks"
 import { selectHousesStatus } from "../../store/houses/housesSlice"
 import { selectCitiesStatus } from "../../store/cities/citiesSlice"
@@ -21,12 +22,11 @@ const Header: React.FC = () => {
   }, [])
 
   return (
-    <div className="container">
-      <div className="bg-indigo-400 h-60 shadow-xl">
-        <div className="text-white text-center pt-10">
-          <div className="text-5xl ">Musial houses</div>
-          <div className="text-2xl">Place with best short-term apartaments</div>
-        </div>
+    <div className="sticky top-0 z-10">
+      <div className="bg-appbar-blue">
+        <Link to="/">
+          <div className="text-[50px] text-white pl-5">Musial houses</div>
+        </Link>
       </div>
     </div>
   )

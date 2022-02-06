@@ -8,22 +8,33 @@ export interface CitiesState {
   zip_code: number
 }
 
-const initialState = {
+export interface State {
+  status: "idle" | "failed" | "loading" | "succedded"
+  selectedCity: string
+  cities: CitiesState[]
+}
+
+const initialState: State = {
   status: "idle",
-  cities: <CitiesState | []>[],
+  selectedCity: "All",
+  cities: [],
 }
 
 export const citiesSlice = createSlice({
   name: "cities",
   initialState,
-  reducers: {},
+  reducers: {
+    selectCity(state, action: PayloadAction<string>) {
+      state.selectedCity = action.payload
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(
         fetchCitiesThunk.fulfilled,
-        (state, action: PayloadAction<CitiesState>) => {
+        (state, action: PayloadAction<[]>) => {
           state.status = "succedded"
-          state.cities = action.payload
+          state.cities = state.cities.concat(action.payload)
         }
       )
       .addCase(fetchCitiesThunk.pending, (state) => {
@@ -37,4 +48,8 @@ export const citiesSlice = createSlice({
 
 export const selectAllCities = (state: RootState) => state.cities.cities
 export const selectCitiesStatus = (state: RootState) => state.cities.status
+export const selectSelectedCity = (state: RootState) =>
+  state.cities.selectedCity
+
+export const { selectCity } = citiesSlice.actions
 export default citiesSlice.reducer
