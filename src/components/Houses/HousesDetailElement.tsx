@@ -1,6 +1,7 @@
 import React from "react"
 import Gallery from "../Gallery/Gallery"
 import Map from "../Map/Map"
+import ContactFormHouse from "../Contact/ContactFormHouse"
 
 import { HousesState } from "../../store/houses/types"
 import Details from "../Details/Details"
@@ -18,8 +19,10 @@ const HousesDetailElement: React.FC<Props> = ({ item }) => {
         <div className="text-xl underline mb-5">{title}</div>
         <div className="md:mr-5 mb-5">{desc}</div>
         <hr />
+        <Map />
+        <hr />
         <div className="md:mr-5 mb-5 h-96">
-          <Map />
+          <ContactFormHouse id={id} />
         </div>
       </div>
       <div className="h-3/4 max-h-full md:w-2/4">
