@@ -1,5 +1,6 @@
 import React from "react"
 import { Link } from "react-router-dom"
+import HousesListThumnbail from "./HousesListThumbnail"
 import { HousesState } from "../../store/houses/types"
 
 interface Props {
@@ -8,8 +9,7 @@ interface Props {
 
 const HousesListElement: React.FC<Props> = ({ item }) => {
   const { title, desc, photos, city } = item
-
-  const main_photo = photos.filter((photo) => photo.main_photo === true)[0]
+  console.log(photos.length)
 
   const link = `/${item.id}`
 
@@ -18,7 +18,7 @@ const HousesListElement: React.FC<Props> = ({ item }) => {
       <div className="container">
         <div className="grid grid-cols-3 gap-4 p-2">
           <div>
-            <img src={main_photo.image} />
+            <HousesListThumnbail photos={photos} />
           </div>
           <div className="col-span-2 relative">
             <div className="text-lg ">{title}</div>
