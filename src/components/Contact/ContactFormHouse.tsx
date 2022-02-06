@@ -38,32 +38,43 @@ const ContactFormHouse: React.FC<Props> = ({ id }) => {
           onSubmit={(values) => handleSumbit(values)}
           validationSchema={ContactFormValidationSchema}
         >
-          <Form>
-            <Field
-              name="sender"
-              className="p-2 border border-solid border-color-black bg-slate-100 mb-5"
-              placeholder="Your email address"
-            />
-            <br />
-            <Field
-              name="subject"
-              className="p-2 border border-solid border-color-black bg-slate-100 mb-5"
-              placeholder="Subject"
-            />
-            <Field
-              as="textarea"
-              name="body"
-              className="w-full h-40 p-2 border border-solid border-color-black bg-slate-100 mb-5"
-              placeholder="Your message"
-            />
-            <div className="grid grid-cols-4">
-              <div className="col-span-3"></div>
-              <button className="bg-green-500 hover:bg-green-700 text-white font-bold w-full py-2 px-4 rounded">
-                Send
-              </button>
-            </div>
-            <br />
-          </Form>
+          {({ errors, touched }) => (
+            <Form>
+              <Field
+                name="sender"
+                className="p-2 border border-solid border-color-black bg-slate-100 mb-5"
+                placeholder="Your email address"
+              />
+              {errors.sender && touched.sender && (
+                <div className="form-text">{errors.sender}</div>
+              )}
+              <br />
+              <Field
+                name="subject"
+                className="p-2 border border-solid border-color-black bg-slate-100 mb-5"
+                placeholder="Subject"
+              />
+              {errors.subject && touched.subject && (
+                <div className="form-text">{errors.subject}</div>
+              )}
+              <Field
+                as="textarea"
+                name="body"
+                className="w-full h-40 p-2 border border-solid border-color-black bg-slate-100 mb-5"
+                placeholder="Your message"
+              />
+              {errors.body && touched.body && (
+                <div className="form-text">{errors.body}</div>
+              )}
+              <div className="grid grid-cols-4">
+                <div className="col-span-3"></div>
+                <button className="bg-green-500 hover:bg-green-700 text-white font-bold w-full py-2 px-4 rounded">
+                  Send
+                </button>
+              </div>
+              <br />
+            </Form>
+          )}
         </Formik>
       </div>
     )
