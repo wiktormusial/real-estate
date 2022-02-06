@@ -9,7 +9,6 @@ interface Props {
 
 const HousesListElement: React.FC<Props> = ({ item }) => {
   const { title, desc, photos, city } = item
-  console.log(photos.length)
 
   const link = `/${item.id}`
 

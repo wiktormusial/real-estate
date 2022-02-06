@@ -9,7 +9,6 @@ interface Props {
 const Details: React.FC<Props> = ({ id }) => {
   const obj = useAppSelector((state) => selectHouseById(state, id))
   const { balcony, bathrooms, beds, kitchen, qm, rooms } = obj.details
-  console.log(obj)
   return (
     <div className="max-h-max p-5 mt-5 bg-white">
       <div className="text-lg underline mb-5">Details</div>

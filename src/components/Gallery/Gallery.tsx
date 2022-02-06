@@ -32,7 +32,6 @@ const Gallery: React.FC<Photos> = ({ photos }) => {
         </div>
       )
     })
-
     return (
       <div className="max-h-max p-5">
         <div className="grid grid-cols-1 mb-5">
