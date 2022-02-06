@@ -31,7 +31,7 @@ const ContactFormHouse: React.FC<Props> = ({ id }) => {
 
   if (status === "idle") {
     return (
-      <div>
+      <div className="relative">
         <FormHeader />
         <Formik
           initialValues={initialValues}
@@ -39,10 +39,10 @@ const ContactFormHouse: React.FC<Props> = ({ id }) => {
           validationSchema={ContactFormValidationSchema}
         >
           {({ errors, touched }) => (
-            <Form>
+            <Form className="">
               <Field
                 name="sender"
-                className="p-2 border border-solid border-color-black bg-slate-100 mb-5"
+                className="p-2 w-full md:w-4/12 border border-solid border-color-black bg-slate-100 mb-5"
                 placeholder="Your email address"
               />
               {errors.sender && touched.sender && (
@@ -51,11 +51,11 @@ const ContactFormHouse: React.FC<Props> = ({ id }) => {
               <br />
               <Field
                 name="subject"
-                className="p-2 border border-solid border-color-black bg-slate-100 mb-5"
+                className="p-2 w-full md:w-4/12 border border-solid border-color-black bg-slate-100 mb-5"
                 placeholder="Subject"
               />
               {errors.subject && touched.subject && (
-                <div className="form-text">{errors.subject}</div>
+                <div className="form-text mb-5">{errors.subject}</div>
               )}
               <Field
                 as="textarea"
@@ -68,7 +68,7 @@ const ContactFormHouse: React.FC<Props> = ({ id }) => {
               )}
               <div className="grid grid-cols-4">
                 <div className="col-span-3"></div>
-                <button className="bg-green-500 hover:bg-green-700 text-white font-bold w-full py-2 px-4 rounded">
+                <button className="bg-green-500 hover:bg-green-700 text-white font-bold w-full py-2 px-4">
                   Send
                 </button>
               </div>

@@ -21,7 +21,7 @@ const HousesDetailElement: React.FC<Props> = ({ item }) => {
         <hr />
         <Map />
         <hr />
-        <div className="md:mr-5 mb-5 h-96">
+        <div className="md:mr-5 mb-5 h-content">
           <ContactFormHouse id={id} />
         </div>
       </div>
