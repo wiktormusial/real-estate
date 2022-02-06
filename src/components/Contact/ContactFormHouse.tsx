@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import { Formik, Form, Field } from "formik"
 import sendMail, { Values } from "../../api/sendMail"
+import ContactFormSuccess from "./ContactFormSuccess"
 
 interface Props {
   id: number
@@ -68,14 +69,14 @@ const ContactFormHouse: React.FC<Props> = ({ id }) => {
     return (
       <div>
         <FormHeader />
-        Test
+        <ContactFormSuccess />
       </div>
     )
   } else if (status === "loading") {
     return (
       <div>
         <FormHeader />
-        Test
+        Loading
       </div>
     )
   }
