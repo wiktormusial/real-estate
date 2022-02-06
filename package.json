@@ -36,6 +36,7 @@
     "@types/react-redux": "^7.1.22",
     "@types/react-router-dom": "^5.3.3",
     "axios": "^0.25.0",
+    "formik": "^2.2.9",
     "google-map-react": "^2.1.10",
     "postcss-preset-env": "^7.3.1",
     "react": "^17.0.2",
