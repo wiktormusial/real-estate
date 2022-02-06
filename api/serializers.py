@@ -1,7 +1,8 @@
+import environ
+
 from rest_framework import serializers
 from houses.models import House, PhotoHouse, City, HouseDetails
 from django.core.mail import send_mail
-import environ
 env = environ.Env(
     # set casting, default value
     DEBUG=(bool, False)
@@ -37,9 +38,12 @@ class DataSerializer(serializers.ModelSerializer):
                   'city', 'photos']
 
     def get_details(self, obj):
-        queryset = HouseDetails.objects.get(pk=obj.housedetails.pk)
-        serializer = HouseDetailsSerializer(queryset)
-        return serializer.data
+        try:
+            queryset = HouseDetails.objects.get(pk=obj.housedetails.pk)
+            serializer = HouseDetailsSerializer(queryset)
+            return serializer.data
+        except House.housedetails.RelatedObjectDoesNotExist:
+            pass
 
 
 class SendMailSerializer(serializers.Serializer):
